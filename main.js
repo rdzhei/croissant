@@ -23,7 +23,7 @@ const controls = new OrbitControls( camera, renderer.domElement );
 
 
 camera.position.set(0, 3, 4);
-controls.update();
+
 let loadedModel;
 
 loader.load( './public/assets/baguette/scene.gltf', function ( gltf ) {
@@ -52,12 +52,6 @@ fontLoader.load( './public/fonts/coco/Coco Gothic_Regular.json', function ( font
         font: font,
         size: 0.5,
         depth: 0.05,
-        // curveSegments: 12,
-        // bevelEnabled: true,
-        // bevelThickness: 0.2,
-        // bevelSize: 2,
-        // bevelOffset: 0,
-        // bevelSegments: 1
     } );
 
     const textMesh = new THREE.Mesh(
@@ -68,18 +62,19 @@ fontLoader.load( './public/fonts/coco/Coco Gothic_Regular.json', function ( font
     textMesh.position.set(-10, 5, -6);
     textMesh.rotation.y = 0.1;
     textMesh.rotation.x = 0.05;
-    // textMesh.rotation.z = 0.5;
-    // textMesh.rotation. = 0.1;
+
     scene.add(textMesh)
 } );
 
+camera.lookAt( -1, 1, -4 );
 function animate() {
+
     if (loadedModel) {
         loadedModel.scene.rotation.y += 0.01;
         loadedModel.scene.scale.set(15,15,15);
     }
     renderer.render( scene, camera );
-    controls.update();
+
     requestAnimationFrame( animate );
 }
 
