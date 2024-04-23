@@ -7,6 +7,7 @@ services:
       - '443:443'
     volumes:
       - ./nginx:/etc/nginx/sites-available
+      - ./nginx:/etc/letsencrypt
     networks:
       default: {}
 
