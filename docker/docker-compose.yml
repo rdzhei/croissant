@@ -1,0 +1,19 @@
+version: '3.6'
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - ./nginx:/etc/nginx/sites-available
+    networks:
+      default: {}
+
+  croissant:
+    image: rdzhei/croissant:latest
+    networks:
+      default: {}
+
+
+
