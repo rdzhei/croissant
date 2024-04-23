@@ -6,5 +6,5 @@ WORKDIR /app
 
 COPY dist /app/dist
 
-CMD /bin/sh
+CMD /sh
 
