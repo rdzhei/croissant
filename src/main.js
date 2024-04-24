@@ -26,7 +26,7 @@ camera.position.set(0, 3, 4);
 
 let loadedModel;
 
-loader.load( './assets/models/baguette/scene.gltf', function ( gltf ) {
+loader.load( './assets/baguette/scene.gltf', function ( gltf ) {
     loadedModel = gltf;
     gltf.animations; // Array<THREE.AnimationClip>
 
@@ -46,7 +46,7 @@ loader.load( './assets/models/baguette/scene.gltf', function ( gltf ) {
 
 const helloText = 'Hello! Can you watch my baguette \nwhile I get a coffee and finish building this page?'
 
-fontLoader.load( './assets/fonts/coco/Coco Gothic_Regular.json', function ( font ) {
+fontLoader.load( './fonts/coco/Coco Gothic_Regular.json', function ( font ) {
 
     const geometry = new TextGeometry( helloText, {
         font: font,
