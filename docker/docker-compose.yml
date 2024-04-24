@@ -2,12 +2,12 @@ version: '3.6'
 services:
   nginx:
     image: nginx:latest
-    user: '1000:1000'
     ports:
       - '80:80'
       - '443:443'
     volumes:
       - ./nginx:/etc/nginx/sites-available
+      - ./nginx:/etc/nginx/sites-enabled
       - ./nginx:/etc/letsencrypt
     networks:
       default: {}
