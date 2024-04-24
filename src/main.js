@@ -44,6 +44,7 @@ loader.load( './assets/baguette/scene.gltf', function ( gltf ) {
 
 } );
 
+window.addEventListener( 'touchstart', onClick );
 window.addEventListener( 'click', onClick );
 
 const geometry = new THREE.BoxGeometry( 3.5, 1, 1 );
