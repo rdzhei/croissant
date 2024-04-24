@@ -9,6 +9,7 @@ services:
       - ./nginx:/etc/nginx/sites-available
       - ./nginx:/etc/nginx/sites-enabled
       - ./nginx:/etc/letsencrypt
+      - ./nginx:/etc/nginx/nginx.conf
     networks:
       default: {}
 
