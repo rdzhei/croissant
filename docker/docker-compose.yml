@@ -1,7 +1,6 @@
-version: '3.6'
 services:
   nginx:
-    image: nginx:latest
+    image: rdzhei/croissant:latest
     ports:
       - '80:80'
       - '443:443'
@@ -10,11 +9,4 @@ services:
       - /etc/letsencrypt:/etc/letsencrypt
     networks:
       default: {}
-
-  croissant:
-    image: rdzhei/croissant:latest
-    networks:
-      default: {}
-
-
 
