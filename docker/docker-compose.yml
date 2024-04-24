@@ -7,6 +7,7 @@ services:
     volumes:
       - ./nginx/sites.conf:/etc/nginx/conf.d/sites.conf
       - /etc/letsencrypt:/etc/letsencrypt
+      - ./../src/pdf:/app/dist/src/pdf
     networks:
       default: {}
 

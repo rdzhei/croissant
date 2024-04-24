@@ -44,26 +44,56 @@ loader.load( './assets/baguette/scene.gltf', function ( gltf ) {
 
 } );
 
-const helloText = 'Hello! Can you watch my baguette \nwhile I get a coffee and finish building this page?'
+window.addEventListener( 'click', onClick );
+
+const geometry = new THREE.BoxGeometry( 3.5, 1, 1 );
+const material = new THREE.MeshBasicMaterial( {color: 0x00ff00} );
+const cube = new THREE.Mesh( geometry, material );
+cube.position.set(-8,2,-6)
+cube.visible = false;
+cube.name = 'aboutMeCube';
+scene.add( cube );
+
 
 fontLoader.load( './fonts/coco/Coco Gothic_Regular.json', function ( font ) {
 
-    const geometry = new TextGeometry( helloText, {
+    const helloText = 'Hello! Can you watch my baguette \nwhile I get a coffee and finish building this page?'
+
+    const helloTextGeometry = new TextGeometry( helloText, {
         font: font,
         size: 0.5,
         depth: 0.05,
     } );
 
-    const textMesh = new THREE.Mesh(
-        geometry,
+    const helloTextMesh = new THREE.Mesh(
+        helloTextGeometry,
         new THREE.MeshBasicMaterial({color: 0xffffff})
     );
 
-    textMesh.position.set(-10, 5, -6);
-    textMesh.rotation.y = 0.1;
-    textMesh.rotation.x = 0.05;
+    helloTextMesh.position.set(-10, 5, -6);
+    helloTextMesh.rotation.y = 0.1;
+    helloTextMesh.rotation.x = 0.05;
 
-    scene.add(textMesh)
+    scene.add(helloTextMesh)
+
+    const aboutMeText = 'About me >';
+
+    const aboutMeTextGeometry = new TextGeometry( aboutMeText, {
+        font: font,
+        size: 0.5,
+        depth: 0.05,
+    } );
+
+    const aboutMeTextMesh = new THREE.Mesh(
+        aboutMeTextGeometry,
+        new THREE.MeshBasicMaterial({color: 0xffffff})
+    );
+
+    aboutMeTextMesh.position.set(-10, 2, -6);
+    aboutMeTextMesh.rotation.y = 0.1;
+    aboutMeTextMesh.rotation.x = 0.05;
+
+    scene.add(aboutMeTextMesh);
 } );
 
 camera.lookAt( -1, 1, -4 );
@@ -88,4 +118,26 @@ if ( WebGL.isWebGLAvailable() ) {
     const warning = WebGL.getWebGLErrorMessage();
     document.getElementById( 'container' ).appendChild( warning );
 
+}
+
+const raycaster = new THREE.Raycaster();
+
+function onClick (event) {
+    event.preventDefault();
+
+    const pointer = new THREE.Vector2();
+
+    pointer.x = (event.clientX / window.innerWidth) * 2 - 1;
+    pointer.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+    raycaster.setFromCamera(pointer, camera);
+
+    const intersects = raycaster.intersectObjects(scene.children);
+
+    if (intersects.length > 0) {
+
+        if (intersects[0].object.name === 'aboutMeCube') {
+            window.location.href = '/resume'
+        }
+    }
 }
