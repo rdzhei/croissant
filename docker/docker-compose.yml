@@ -6,10 +6,8 @@ services:
       - '80:80'
       - '443:443'
     volumes:
-      - ./nginx:/etc/nginx/sites-available
-      - ./nginx:/etc/nginx/sites-enabled
-      - ./nginx:/etc/letsencrypt
-      - ./nginx/sites.conf:/etc/nginx/nginx.conf
+      - ./nginx/sites.conf:/etc/nginx/conf.d/sites.conf
+      - /etc/letsencrypt:/etc/letsencrypt
     networks:
       default: {}
 
