@@ -4,4 +4,4 @@ build-fe:
 	docker push rdzhei/croissant
 
 up:
-	docker compose -f ./docker/docker-compose.yml -p la-pain up -d
+	docker compose -f ./docker/docker-compose.yml -p le-bakery up -d
